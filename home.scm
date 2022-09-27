@@ -3,13 +3,15 @@
   (gnu home)
   (gnu home services)
   (gnu home services shells)
+  (gnu home services ssh)
   (gnu services)
-  (gnu packages)  
+  (gnu packages)
   (gnu packages admin)
   (gnu packages shells)
   (gnu packages telegram)
   (gnu packages package-management)
-  (gnu packages freedesktop))
+  (gnu packages freedesktop)
+  (gnu packages ssh))
 
 (define %home-files
 ;;  (map normalize-config
@@ -20,6 +22,7 @@
 (home-environment
  (packages 
    (list 
+     openssh
      htop 
      flatpak xdg-desktop-portal xdg-desktop-portal-gtk 
      zsh))
@@ -32,6 +35,7 @@
 ;                 ))
     (service home-files-service-type %home-files)
     (service home-zsh-service-type)
+    (service home-openssh-service-type)
 ;               (home-zsh-configuration
 ;                 (environment-variables 
 ;		   '(("GIT_AUTHOR_NAME" . "Mohamed Amine LEGHERABA")
