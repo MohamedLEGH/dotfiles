@@ -14,7 +14,16 @@
   (gnu packages ssh))
 
 (define %home-files
-  `((".gitconfig" ,(local-file "gitconfig"))))
+  `(
+     (".gitconfig" ,(local-file "gitconfig"))
+   )
+)
+
+(define %zsh-file
+  `(
+     ,(local-file "zshrc")
+   )
+)
 
 (home-environment
  (packages 
@@ -26,5 +35,7 @@
  (services
   (list
     (service home-files-service-type %home-files)
-    (service home-zsh-service-type)
+    (service home-zsh-service-type
+      (home-zsh-configuration 
+        (zshrc %zsh-file)))
     (service home-openssh-service-type))))
