@@ -14,10 +14,7 @@
   (gnu packages ssh))
 
 (define %home-files
-;;  (map normalize-config
-;;       '(("gitconfig" . ".gitconfig"))))
-;  '(("gitconfig" . ".gitconfig")))
-`((".gitconfig" ,(local-file "gitconfig"))))
+  `((".gitconfig" ,(local-file "gitconfig"))))
 
 (home-environment
  (packages 
@@ -28,23 +25,6 @@
      zsh))
  (services
   (list
-;    (simple-service 'some-useful-env-vars-service
-;		home-environment-variables-service-type
-;		`(("GIT_AUTHOR_NAME" . "Mohamed Amine LEGHERABA")
-;                  ("GIT_AUTHOR_EMAIL" . "mlegheraba@protonmail.com")
-;                 ))
     (service home-files-service-type %home-files)
     (service home-zsh-service-type)
-    (service home-openssh-service-type)
-;               (home-zsh-configuration
-;                 (environment-variables 
-;		   '(("GIT_AUTHOR_NAME" . "Mohamed Amine LEGHERABA")
-;                     ("GIT_AUTHOR_EMAIL" . "mlegheraba@protonmail.com")
-;                 ))
-;))
-)))
-;    (service home-bash-service-type
-;            (home-bash-configuration
-;             (guix-defaults? #t)
-;             (bash-profile (list (plain-file "bash-profile" "\
-;export HISTFILE=$XDG_CACHE_HOME/.bash_history"))))))))
+    (service home-openssh-service-type))))
