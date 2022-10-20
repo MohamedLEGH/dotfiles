@@ -24,11 +24,18 @@
   (gnu packages gimp)
   (gnu packages disk)
   (gnu packages pdf)
-  (gnu packages imagemagick))
+  (gnu packages commencement)
+  (gnu packages imagemagick)
+  (gnu packages cmake)
+  (gnu packages llvm)
+  (nongnu packages messaging)
+  (mohamed packages crates)
+)
 
 (define %home-files
   `(
      (".gitconfig" ,(local-file "gitconfig"))
+     ;(".config/nix/nix.conf" ,(local-file "nix.conf"))
    )
 )
 
@@ -52,7 +59,7 @@
      flatpak
      zsh
      rust 
-     rust-cargo-0.53
+     rust-cargo-0.65 ;; from custom channel
      python
      node
      weechat ; irc chat
@@ -62,7 +69,10 @@
      xournalpp ; edit pdf
      poppler ; combine pdf
      imagemagick ; pdf to jpeg
-     nix ; package manager
+     zoom ;; visio conference
+     gcc-toolchain ;; gcc
+     ;clang-toolchain
+     cmake ;; cmake
 ))
  (services
   (list
