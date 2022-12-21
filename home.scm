@@ -28,8 +28,18 @@
   (gnu packages imagemagick)
   (gnu packages cmake)
   (gnu packages llvm)
+  (gnu packages linux)
+  (gnu packages python-xyz)
+  (gnu packages virtualization)
+  (gnu packages unicode)
+  (gnu packages xorg)
+  ;(gnu packages wine)
   (nongnu packages messaging)
-  (mohamed packages crates)
+  ;(nongnu packages chromium)
+  ;(nongnu packages wine)
+  (brandhout packages vscodium)
+  (chromium chromium)
+  ;(mohamed packages crates)
 )
 
 (define %home-files
@@ -57,10 +67,11 @@
      htop
      libreoffice
      flatpak
-     zsh
+     ;zsh
      rust 
-     rust-cargo-0.65 ;; from custom channel
-     python
+     ;rust-cargo-0.65 ;; from custom channel
+     ;python
+     python-toolchain ;jupyter guix-jupyter
      node
      weechat ; irc chat
      gimp ; pictures editing
@@ -71,13 +82,27 @@
      imagemagick ; pdf to jpeg
      zoom ;; visio conference
      gcc-toolchain ;; gcc
+     linux-libre-headers
      ;clang-toolchain
      cmake ;; cmake
+     unicode-emoji
+     xhost
+     vscodium
+     ;wine winetricks
+     ;chromium
+     chromium+drm
+     virt-manager ;; virtual machine manager
 ))
  (services
   (list
     (service home-files-service-type %home-files)
-    (service home-zsh-service-type
-      (home-zsh-configuration 
-        (zshrc %zsh-file)))
+    (service home-bash-service-type
+      (home-bash-configuration ;))
+             (guix-defaults? #t)
+             (bash-profile (list (plain-file "bash-profile" "\
+export HISTFILE=$XDG_CACHE_HOME/.bash_history")))))
+
+    ;(service home-zsh-service-type
+    ;  (home-zsh-configuration 
+    ;    (zshrc %zsh-file)))
     (service home-openssh-service-type))))
