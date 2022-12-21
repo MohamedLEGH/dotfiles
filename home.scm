@@ -33,6 +33,7 @@
   (gnu packages virtualization)
   (gnu packages unicode)
   (gnu packages xorg)
+  (gnu packages rsync)
   ;(gnu packages wine)
   (nongnu packages messaging)
   ;(nongnu packages chromium)
@@ -92,6 +93,7 @@
      ;chromium
      chromium+drm
      virt-manager ;; virtual machine manager
+     rsync
 ))
  (services
   (list
